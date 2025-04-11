@@ -55,6 +55,24 @@ build CMakeFiles/ProyectoProgramacion.dir/main.cpp.obj: CXX_COMPILER__ProyectoPr
   OBJECT_DIR = CMakeFiles\ProyectoProgramacion.dir
   OBJECT_FILE_DIR = CMakeFiles\ProyectoProgramacion.dir
 
+build CMakeFiles/ProyectoProgramacion.dir/src/models/Profesor.cpp.obj: CXX_COMPILER__ProyectoProgramacion_unscanned_Debug C$:/Users/Andre/CLionProjects/ProyectoProgramacion/src/models/Profesor.cpp || cmake_object_order_depends_target_ProyectoProgramacion
+  DEP_FILE = CMakeFiles\ProyectoProgramacion.dir\src\models\Profesor.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\ProyectoProgramacion.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProyectoProgramacion.dir\src\models
+
+build CMakeFiles/ProyectoProgramacion.dir/src/repository/ProfesorRepository.cpp.obj: CXX_COMPILER__ProyectoProgramacion_unscanned_Debug C$:/Users/Andre/CLionProjects/ProyectoProgramacion/src/repository/ProfesorRepository.cpp || cmake_object_order_depends_target_ProyectoProgramacion
+  DEP_FILE = CMakeFiles\ProyectoProgramacion.dir\src\repository\ProfesorRepository.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\ProyectoProgramacion.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProyectoProgramacion.dir\src\repository
+
+build CMakeFiles/ProyectoProgramacion.dir/src/services/ProfesorService.cpp.obj: CXX_COMPILER__ProyectoProgramacion_unscanned_Debug C$:/Users/Andre/CLionProjects/ProyectoProgramacion/src/services/ProfesorService.cpp || cmake_object_order_depends_target_ProyectoProgramacion
+  DEP_FILE = CMakeFiles\ProyectoProgramacion.dir\src\services\ProfesorService.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\ProyectoProgramacion.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProyectoProgramacion.dir\src\services
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ProyectoProgramacion
@@ -63,7 +81,7 @@ build CMakeFiles/ProyectoProgramacion.dir/main.cpp.obj: CXX_COMPILER__ProyectoPr
 #############################################
 # Link the executable ProyectoProgramacion.exe
 
-build ProyectoProgramacion.exe: CXX_EXECUTABLE_LINKER__ProyectoProgramacion_Debug CMakeFiles/ProyectoProgramacion.dir/main.cpp.obj
+build ProyectoProgramacion.exe: CXX_EXECUTABLE_LINKER__ProyectoProgramacion_Debug CMakeFiles/ProyectoProgramacion.dir/main.cpp.obj CMakeFiles/ProyectoProgramacion.dir/src/models/Profesor.cpp.obj CMakeFiles/ProyectoProgramacion.dir/src/repository/ProfesorRepository.cpp.obj CMakeFiles/ProyectoProgramacion.dir/src/services/ProfesorService.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ProyectoProgramacion.dir
