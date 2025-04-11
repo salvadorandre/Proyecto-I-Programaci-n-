@@ -8,7 +8,7 @@
 
 
 class ProfesorService {
-  ProfesorRepository IprofesorRepo;
+  ProfesorRepository Iprofesor;
   public:
     ProfesorService(const ProfesorRepository &profesorRepository);
     void crearProfesor();
