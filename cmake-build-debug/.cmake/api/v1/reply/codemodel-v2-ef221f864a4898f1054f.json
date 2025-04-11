@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/Admin/Documents/Projects/C plus plus/Proyecto-I-Programaci-n-/cmake-build-debug",
-		"source" : "C:/Users/Admin/Documents/Projects/C plus plus/Proyecto-I-Programaci-n-"
+		"build" : "C:/Users/Andre/CLionProjects/ProyectoProgramacion/cmake-build-debug",
+		"source" : "C:/Users/Andre/CLionProjects/ProyectoProgramacion"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 7
+		"minor" : 6
 	}
 }
