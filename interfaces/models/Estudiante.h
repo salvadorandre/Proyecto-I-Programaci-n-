@@ -6,8 +6,7 @@
 
 using namespace std;
 
-class Estudiante{
-    public:
+struct  Estudiante{
         string nombre;
         int edad;
         string genero;
