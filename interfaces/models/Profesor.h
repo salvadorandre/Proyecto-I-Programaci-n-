@@ -14,6 +14,4 @@ class Profesor {
       string nombre;
 };
 
-
-
 #endif //PROFESOR_H
