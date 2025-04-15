@@ -3,5 +3,5 @@ project(ProyectoProgramacion)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(ProyectoProgramacion main.cpp
+add_executable(ProyectoProgramacion main.cpp ./src/services/ProfesorService.cpp
         interfaces/repository/EstudianteRepository.h)
