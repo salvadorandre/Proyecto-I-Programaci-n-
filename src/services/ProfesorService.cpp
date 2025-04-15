@@ -6,7 +6,8 @@
 #include "../../interfaces/repository/ProfesorRepository.h"
 
 
-ProfesorService::ProfesorService(const ProfesorRepository &profesorRepo):IprofesorRepo(profesorRepo) {
+ProfesorService::ProfesorService(const ProfesorRepository &profesorService) {
+  Iprofesor = profesorService;
 }
 void ProfesorService::crearProfesor() {
 

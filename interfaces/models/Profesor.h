@@ -8,10 +8,10 @@
 
 using namespace std;
 
-class Profesor {
-    public:
+struct Profesor {
       int idProfesor;
       string nombre;
+      bool active;
 };
 
 
