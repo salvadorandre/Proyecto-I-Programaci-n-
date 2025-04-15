@@ -11,6 +11,7 @@ using namespace std;
 struct Profesor {
       int idProfesor;
       string nombre;
+      bool active;
 };
 
 
