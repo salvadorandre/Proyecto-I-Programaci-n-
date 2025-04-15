@@ -6,5 +6,6 @@ set(CMAKE_CXX_STANDARD 23)
 add_executable(ProyectoProgramacion main.cpp ./src/services/ProfesorService.cpp
         src/models/Estudiante.cpp
         src/services/EstudianteService.cpp
-        interfaces/services/EstudianteService.h
+        interfaces/controller/EstudianteController.h
+        src/controller/EstudianteController.cpp
 )
