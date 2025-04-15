@@ -9,7 +9,7 @@
 ProfesorService::ProfesorService(const ProfesorRepository &profesorService): Iprofesor(profesorService){};
 
 void ProfesorService::crearProfesor() {
-
+ //metodos usando el repository
 }
 
 
