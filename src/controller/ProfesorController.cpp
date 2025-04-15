@@ -9,15 +9,20 @@ ProfesorController::ProfesorController(ProfesorService profesorService)
 
 void ProfesorController::buscarProfesor() {
     cout << "Buscando profesor..." << endl;
+    //recibir parametros por cin y getline
+    //usar service
 
 }
 
 void ProfesorController::listaProfesores() {
     cout << "Listando profesores..." << endl;
-
+    //recibir parametros por cin y getline
+    //usar service
 }
 
 void ProfesorController::crearProfesores() {
     cout << "Creando profesor..." << endl;
-    profesorService.crearProfesor();
+    profesorService.crearProfesor();//ejemplo
+    //recibir parametros por cin y getline
+    //usar service
 }

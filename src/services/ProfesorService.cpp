@@ -6,10 +6,25 @@
 #include "../../interfaces/repository/ProfesorRepository.h"
 
 
-ProfesorService::ProfesorService(const ProfesorRepository &profesorService): Iprofesor(profesorService){};
+ProfesorService::ProfesorService(const ProfesorRepository &repository): repository(repository){};
 
-void ProfesorService::crearProfesor() {
- //metodos usando el repository
+string ProfesorService::crearProfesor(Profesor profesor) {
+    //validaciones
+    //manejo de repo
+}
+Profesor ProfesorService::obtenerProfesor(int idProfesor) {
+    //validaciones
+    //manejo de repo
+}
+
+vector<Profesor> ProfesorService() {
+    //validaciones
+    //repo
+}
+
+string ProfesorService::eliminarProfesor(int idProfesor) {
+    //validaciones
+    //repo
 }
 
 
