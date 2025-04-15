@@ -1,5 +1,5 @@
 #include "../../interfaces/repository/EstudianteRepository.h"
-#include "../../interfaces/models/estudiante.h"
+#include "../../interfaces/models/Estudiante.h"
 #include <iostream>
 
 EstudianteRepository::EstudianteRepository(const string& nombreArchivo) {
