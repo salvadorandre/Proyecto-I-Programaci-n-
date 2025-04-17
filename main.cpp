@@ -9,13 +9,20 @@
 #include "./interfaces/UI/ui.h"
 using namespace std;
 int main() {
+    FILE *archivo, *archivo2;
+//Variables para los profesores.
+    ProfesorRepository profeRepo(archivo, "bdProfesor");
+    ProfesorService profeService(profeRepo);
+    ProfesorController profesorController(profeService);
+
+//Variables para los estudiantes
+    EstudianteRepository estuRepo(archivo,"bdEstudiante");
+    EstudianteService estuService(estuRepo);
+    EstudianteController estuController(estuService);
 
     cout<<"DAVID X JHON, JUNTOS POR SIEMPRE"<<endl;
-    /*
-     *
-     *  UI interfazGrafica;
-        interfazGrafica.menuPrincipal();
-    */
+    UI interfazGrafica(estuController, profesorController);
+    interfazGrafica.menuPrincipal();
 
 
     return 0;

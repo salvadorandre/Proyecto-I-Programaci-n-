@@ -13,17 +13,14 @@
 class UI {
 private:
     //Variables para los profesores.
-    ProfesorRepository profeRepo;
-    ProfesorService profeService;
-    ProfesorController profesor;
+
+    ProfesorController profesorController;
 
     //Variables para los estudiantes
     EstudianteController estuController;
-    EstudianteService estuService;
-    EstudianteRepository estuRepo;
 
 public:
-    UI();
+    UI(EstudianteController estuController, ProfesorController profeController);
     void menuPrincipal();
     void menuEstudiante();
     void menuProfesor();

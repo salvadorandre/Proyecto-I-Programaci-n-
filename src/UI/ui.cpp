@@ -9,17 +9,11 @@
 #include "../../interfaces/repository/EstudianteRepository.h"
 using namespace std;
 
-FILE *archivo;
-UI::UI()
+
+UI::UI(EstudianteController estuController, ProfesorController profeController): estuController(estuController), profesorController(profeController)
 
 
-        : profeRepo(archivo, "bdProfesor"), // Nombre del archivo
-          profeService(profeRepo),
-          profesor(profeService),
 
-          estuRepo(archivo,"bdEstudiante"),
-          estuService(estuRepo),
-          estuController(estuService)
 {
     // Ya se construyó correctamente todo lo necesario.
 
@@ -104,11 +98,11 @@ void UI::menuProfesor() {
         switch(opc) {
             case 1:
                 //Metodo para crear el profe.
-                profesor.crearProfesores();
+                profesorController.crearProfesores();
                 break;
             case 2:
                 //Metodo para buscar al profe
-                profesor.buscarProfesor();
+                profesorController.buscarProfesor();
                 break;
             case 3:
                 //Pendiente XD
