@@ -11,7 +11,6 @@ using namespace std;
 class EstudianteRepository{
 private:
     string fileName;
-
 public:
     explicit EstudianteRepository(const string& nombreArchivo = "estudiantes.dat");
 
