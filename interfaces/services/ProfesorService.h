@@ -8,11 +8,13 @@
 
 
 class ProfesorService {
-  ProfesorRepository Iprofesor;
+  ProfesorRepository repository;
   public:
     ProfesorService(const ProfesorRepository &profesorRepository);
-    void crearProfesor();
-
+    string crearProfesor(Profesor profesor);
+    Profesor obtenerProfesor(int idProfesor);
+    vector<Profesor> listaProfesores();
+    string eliminarProfesor(int idProfesor);
 
 };
 
