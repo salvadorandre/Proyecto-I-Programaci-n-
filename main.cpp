@@ -6,34 +6,24 @@
 #include "./interfaces/controller/EstudianteController.h"
 #include "./interfaces/services/EstudianteService.h"
 #include "./interfaces/repository/EstudianteRepository.h"
-
+#include "./interfaces/UI/ui.h"
 using namespace std;
 int main() {
-   //---    TODO ESTO METER EN UI ANDRE, AQUI SOLO LLAMAR LA UI PARA QUE CHAMBEE
+    FILE *archivo, *archivo2;
+//Variables para los profesores.
+    ProfesorRepository profeRepo(archivo, "bdProfesor");
+    ProfesorService profeService(profeRepo);
+    ProfesorController profesorController(profeService);
 
-    //esto tiene que ir en la ui, en la parte de profesor
-    FILE *file;
-    FILE *file2;
+//Variables para los estudiantes
+    EstudianteRepository estuRepo(archivo,"bdEstudiante");
+    EstudianteService estuService(estuRepo);
+    EstudianteController estuController(estuService);
 
-    //creen un archivo de texto en cmake-build-debug/bdProfes.txt
-    ProfesorRepository repository(file,"bdProfes");
-    ProfesorService profesorService(repository);
-    ProfesorController profesor_controller(profesorService);
+    cout<<"DAVID X JHON, JUNTOS POR SIEMPRE"<<endl;
+    UI interfazGrafica(estuController, profesorController);
+    interfazGrafica.menuPrincipal();
 
-    EstudianteRepository repositoryE(file2,"bdEstudiante");
-    EstudianteService estudianteService(repositoryE);
-    EstudianteController estudianteController(estudianteService);
-
-
-    estudianteController.crearEstudiantes();
-    estudianteController.buscarEstudiante();
-    estudianteController.listaEstudiantes();
-
-    //menu que tiene que ir en el objeto ui y llamarlo aqui
-    //esto solo es un ejemplo
-    profesor_controller.buscarProfesor();
-    profesor_controller.crearProfesores();
-    profesor_controller.listaProfesores();
 
     return 0;
 }
