@@ -1,19 +1,21 @@
 //
-// Created by Admin on 10/04/2025.
+// Created by Daniel on 10/04/2025.
 //
 
-#ifndef ESTUDIANTESERVICE_H
-#define ESTUDIANTESERVICE_H
+#ifndef ESTUDIANTE_SERVICE_H
+#define ESTUDIANTE_SERVICE_H
+
 #include "../repository/EstudianteRepository.h"
 
-
 class EstudianteService {
-    EstudianteRepository Iestudiante;
+    EstudianteRepository repository;
+
 public:
     EstudianteService(const EstudianteRepository &estudianteRepository);
-    void crearEstudiante();
-
-
+    string crearEstudiante(Estudiante estudiante);
+    Estudiante obtenerEstudiante(int idEstudiante);
+    vector<Estudiante> listaEstudiantes();
+    string eliminarEstudiante(int idEstudiante);
 };
 
-#endif //ESTUDIANTESERVICE_H
+#endif //ESTUDIANTE_SERVICE_H

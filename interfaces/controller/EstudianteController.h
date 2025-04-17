@@ -1,22 +1,17 @@
-//
-// Created by Marco Lacán on 14/04/2025.
-//
-
 #ifndef ESTUDIANTECONTROLLER_H
 #define ESTUDIANTECONTROLLER_H
-#include "../../interfaces/repository/EstudianteRepository.h"
+
+#include "../../interfaces/services/EstudianteService.h"
 
 class EstudianteController {
-private:
-    EstudianteRepository repo;
+    EstudianteService estudianteService;
 
 public:
-    EstudianteController();
+    EstudianteController(EstudianteService estudianteService);
 
-    bool agregarEstudiante(const Estudiante& estudiante);
-    vector<Estudiante> obtenerTodos();
-    Estudiante buscarPorNombre(const string& nombre);
-    bool eliminarPorNombre(const string& nombre);
+    void buscarEstudiante();
+    void listaEstudiantes();
+    void crearEstudiantes();
 };
 
 #endif //ESTUDIANTECONTROLLER_H

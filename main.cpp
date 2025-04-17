@@ -2,14 +2,22 @@
 #include "./interfaces/controller/ProfesorController.h"
 #include "./interfaces/services/ProfesorService.h"
 #include "./interfaces/repository/ProfesorRepository.h"
+
+#include "./interfaces/controller/EstudianteController.h"
+#include "./interfaces/services/EstudianteService.h"
+#include "./interfaces/repository/EstudianteRepository.h"
+
 using namespace std;
 int main() {
     //esto tiene que ir en la ui, en la parte de profesor
     FILE *file;
+    FILE *file2;
+
     //creen un archivo de texto en cmake-build-debug/bdProfes.txt
     ProfesorRepository repository(file,"bdProfes");
     ProfesorService profesorService(repository);
     ProfesorController profesor_controller(profesorService);
+
 
     //menu que tiene que ir en el objeto ui y llamarlo aqui
     //esto solo es un ejemplo
