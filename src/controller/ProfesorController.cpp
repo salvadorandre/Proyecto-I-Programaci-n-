@@ -20,9 +20,10 @@ void ProfesorController::buscarProfesor() {
 void ProfesorController::listaProfesores() {
     cout << "Listando profesores..." << endl;
     vector<Profesor> lista = profesorService.listaProfesores();
-    for (int i = 0; i < lista.size(); i++) {
-        cout << lista[i].getDetails() << endl;
+    for ( auto& profesor : lista) {
+        cout << profesor.getDetails() << endl;
     }
+
 }
 
 void ProfesorController::crearProfesores() {
