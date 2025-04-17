@@ -10,10 +10,11 @@ using namespace std;
 
 struct Profesor {
       int idProfesor;
-      string nombre;
+      char nombre[50];
       bool active;
+      string getDetails() {
+            return nombre;
+      }
 };
-
-
 
 #endif //PROFESOR_H

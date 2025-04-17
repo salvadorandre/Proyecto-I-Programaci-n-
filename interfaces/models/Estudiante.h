@@ -7,12 +7,16 @@
 using namespace std;
 
 struct  Estudiante{
-        string nombre;
+        int idEstudiante;
+        char nombre[50];
         int edad;
-        string genero;
-        string grado;
+        char genero[50];
+        char grado[50];
+        bool active;
         float promedio;
+        string getDetails(){
+                return nombre;
+        }
 };
-
 
 #endif
