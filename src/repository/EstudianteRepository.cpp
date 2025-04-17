@@ -71,17 +71,17 @@ bool EstudianteRepository::deleteEstudiante(int idEstudiante) {
     Estudiante foundEstudiante = getEstudianteById(idEstudiante);
     if (foundEstudiante.idEstudiante == -1) return false;
 
-    file = getFile("r+b"); // para abrir el archivo en modo lectura y escritura binaria
-    Estudiante estudianteDelete;
-    while(fread(&estudianteDelete, sizeof(Estudiante), 1, file)) {
-        if (estudianteDelete.idEstudiante == idEstudiante) {
-            estudianteDelete.active = false;
-            fseek(file, -sizeof(Estudiante), SEEK_CUR);  // Coloca el puntero en la posición correcta para sobrescribir
-            fwrite(&estudianteDelete, sizeof(Estudiante), 1, file);
-            fclose(file);
-            return true;
-        }
-    }
+//    file = getFile("r+b"); // para abrir el archivo en modo lectura y escritura binaria
+//    Estudiante estudianteDelete;
+//    while(fread(&estudianteDelete, sizeof(Estudiante), 1, file)) {
+//        if (estudianteDelete.idEstudiante == idEstudiante) {
+//            estudianteDelete.active = false;
+//            fseek(file, -sizeof(Estudiante), SEEK_CUR);  // Coloca el puntero en la posición correcta para sobrescribir
+//            fwrite(&estudianteDelete, sizeof(Estudiante), 1, file);
+//            fclose(file);
+//            return true;
+//        }
+//    }
 
     fclose(file);
     return false;

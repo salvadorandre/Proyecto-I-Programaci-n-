@@ -1,19 +1,16 @@
-#ifndef ESTUDIANTECONTROLLER_H
-#define ESTUDIANTECONTROLLER_H
+
 
 #include "../../interfaces/services/EstudianteService.h"
+#include "../../interfaces/controller/EstudianteController.h"
 #include <iostream>
 
 using namespace std;
 
-class EstudianteController {
-    EstudianteService estudianteService;
+EstudianteController::EstudianteController(EstudianteService estudianteService):estudianteService(estudianteService) {};
 
-public:
-    EstudianteController(EstudianteService estudianteService)
-        : estudianteService(estudianteService) {}
 
-    void buscarEstudiante() {
+
+    void EstudianteController::buscarEstudiante() {
         int id = 0;
         cout << "Ingrese el ID del estudiante a buscar" << endl;
         cin >> id;
@@ -26,7 +23,7 @@ public:
         cout << "Promedio: " << estudianteObtenido.promedio << endl;
     }
 
-    void listaEstudiantes() {
+    void EstudianteController::listaEstudiantes() {
         cout << "Listando estudiantes..." << endl;
         vector<Estudiante> lista = estudianteService.listaEstudiantes();
         for (int i = 0; i < lista.size(); i++) {
@@ -39,28 +36,27 @@ public:
         }
     }
 
-    void crearEstudiantes() {
+    void EstudianteController::crearEstudiantes() {
         Estudiante estudiante;
 
         cout << "Ingrese un ID para el estudiante" << endl;
         cin >> estudiante.idEstudiante;
         estudiante.active = true;
+        cout << "Ingrese la edad" << endl;
+        cin >> estudiante.edad;
+        cout << "Ingrese el promedio" << endl;
+        cin >> estudiante.promedio;
         cin.ignore();
         cout << "Ingrese su nombre" << endl;
         cin.getline(estudiante.nombre, sizeof(estudiante.nombre));
-        cout << "Ingrese la edad" << endl;
-        cin >> estudiante.edad;
-        cin.ignore();
         cout << "Ingrese el género" << endl;
         cin.getline(estudiante.genero, sizeof(estudiante.genero));
         cout << "Ingrese el grado" << endl;
         cin.getline(estudiante.grado, sizeof(estudiante.grado));
-        cout << "Ingrese el promedio" << endl;
-        cin >> estudiante.promedio;
-
+       estudiante.active = true;
         cout << "Creando estudiante..." << endl;
         estudianteService.crearEstudiante(estudiante);
     }
-};
 
-#endif // ESTUDIANTECONTROLLER_H
+
+

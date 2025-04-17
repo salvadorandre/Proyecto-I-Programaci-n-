@@ -10,9 +10,7 @@
 
 using namespace std;
 
-EstudianteService::EstudianteService(const EstudianteRepository &estudianteRepository) {
-    this->repository = estudianteRepository;
-}
+EstudianteService::EstudianteService(const EstudianteRepository &estudianteRepository):repository(estudianteRepository) {}
 
 string EstudianteService::crearEstudiante(Estudiante estudiante) {
     bool resultado = repository.putEstudiante(estudiante);
