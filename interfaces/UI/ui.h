@@ -21,10 +21,13 @@ private:
 
 public:
     UI(EstudianteController estuController, ProfesorController profeController);
+    void setColor(int color);
     void menuPrincipal();
     void menuEstudiante();
     void menuProfesor();
     void reporteGeneral();
+    void reporteEstudiantes();
+    void reporteProfesores();
 };
 
 #endif //PROYECTOPROGRAMACION_UI_H
