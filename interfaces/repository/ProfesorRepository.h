@@ -8,7 +8,7 @@
 #include <cstdio>
 
 #include "../../interfaces/models/Profesor.h"
-
+using namespace std;
 
 class ProfesorRepository {
     FILE *file;

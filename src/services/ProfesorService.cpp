@@ -31,6 +31,7 @@ Profesor ProfesorService::obtenerProfesor(int idProfesor) {
         return profesor;
     }catch (invalid_argument e) {
         cout << e.what() << endl;
+
     }
 }
 
