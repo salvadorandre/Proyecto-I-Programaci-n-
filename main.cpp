@@ -6,10 +6,14 @@
 #include "./interfaces/controller/EstudianteController.h"
 #include "./interfaces/services/EstudianteService.h"
 #include "./interfaces/repository/EstudianteRepository.h"
+
+#include "./interfaces/controller/AsignarController.h"
+#include "./interfaces/services/AsignarService.h"
+#include "./interfaces/repository/AsignacionesRepository.h"
 #include "./interfaces/UI/ui.h"
 using namespace std;
 int main() {
-    FILE *archivo, *archivo2;
+    FILE *archivo, *archivo2, *archivo3;
 //Variables para los profesores.
     ProfesorRepository profeRepo(archivo, "bdProfesor");
     ProfesorService profeService(profeRepo);
@@ -20,8 +24,12 @@ int main() {
     EstudianteService estuService(estuRepo);
     EstudianteController estuController(estuService);
 
+    AsignacionesRepository asigRepo(archivo3, "bdAsignaciones");
+    AsignarService asignarService(estuService,profeService,asigRepo);
+    AsignarController asignaController(asignarService);
+
     cout<<"DAVID X JHON, JUNTOS POR SIEMPRE"<<endl;
-    UI interfazGrafica(estuController, profesorController);
+    UI interfazGrafica(estuController, profesorController,asignarService);
     interfazGrafica.menuPrincipal();
 
 

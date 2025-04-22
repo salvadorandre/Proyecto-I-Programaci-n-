@@ -88,22 +88,19 @@ bool AsignacionesRepository::coincidencia (int idProfesor,int idEstudiante){
 bool AsignacionesRepository::postAsignacion(Profesor profesor, Estudiante estudiante){
   file = fopen(fileName.c_str(),"ab");
   if(file == nullptr){
-    fclose(file);
+    //fclose(file);
     return false;
   }
   int idEstudiante = estudiante.idEstudiante;
   int idProfesor = profesor.idProfesor;
-  int idAsignacion = autoIncrement();
-  if(idAsignacion == 0){
-    idAsignacion = 1;
-  }else{
-    idAsignacion+=1;
-  }
+  int idAsignacion = autoIncrement()+1;
+
   Asignacion asignacion;
   asignacion.idProfesor = idProfesor;
   asignacion.idEstudiante = idEstudiante;
+  asignacion.idAsignacion = idAsignacion;
 
-  fwrite(&asignacion, sizeof(asignacion), 1, file);
+  fwrite(&asignacion, sizeof(Asignacion), 1, file);
   fclose(file);
   return true;
 

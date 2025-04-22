@@ -1,16 +1,14 @@
 #include "../../interfaces/UI/ui.h"
 #include <iostream>
 #include "../../interfaces/controller/ProfesorController.h"
-#include "../../interfaces/services/ProfesorService.h"
-#include "../../interfaces/repository/ProfesorRepository.h"
-
 #include "../../interfaces/controller/EstudianteController.h"
-#include "../../interfaces/services/EstudianteService.h"
-#include "../../interfaces/repository/EstudianteRepository.h"
+#include "../../interfaces/controller/AsignarController.h"
+
+
 using namespace std;
 
 
-UI::UI(EstudianteController estuController, ProfesorController profeController): estuController(estuController), profesorController(profeController)
+UI::UI(EstudianteController estuController, ProfesorController profeController,AsignarController asignarController): estuController(estuController), profesorController(profeController),asigController(asignarController)
 
 
 
@@ -32,6 +30,8 @@ void UI::menuPrincipal() {
 
         cout<<"Ingrese una opcion: "<<endl;
         cin>>opc;
+        asigController.asignar();
+        //asigController.listarAsignaciones();
 
         switch(opc) {
             case 1:

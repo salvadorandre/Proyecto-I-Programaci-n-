@@ -16,14 +16,20 @@ AsignarController::AsignarController(AsignarService asignarServic):service(asign
 
 
 void AsignarController::asignar(){
-  int idProfesor = 0;
-  int idEstudiante = 0;
+  try {
+    int idProfesor = 0;
+    int idEstudiante = 0;
 
-  cout<<"profesor"<<endl;
-  cin>>idProfesor;
-  cout<<"estudiante"<<endl;
-  cin>>idEstudiante;
-  service.AsignarProfesor(idProfesor, idEstudiante);
+    cout<<"profesor"<<endl;
+    cin>>idProfesor;
+    cout<<"estudiante"<<endl;
+    cin>>idEstudiante;
+
+    string mesagge = service.AsignarProfesor(idProfesor, idEstudiante);
+    cout<<mesagge<<endl;
+  }catch(exception& e) {
+    cout<<e.what()<<endl;
+  }
 }
 void AsignarController::listarAsignaciones(){
   for(auto asignacion: service.listaDeAsignaciones()){
