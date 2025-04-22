@@ -7,9 +7,10 @@
 #include "../models/Estudiante.h"
 #include "../models/Profesor.h"
 
-struct asignacion{
-  Estudiante &estudante;
-  Profesor &profesor;
+struct Asignacion{
+  int idAsignacion;
+  int idProfesor;
+  int idEstudiante;
 };
 
 #endif //ASIGNACION_H
