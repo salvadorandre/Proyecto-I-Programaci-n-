@@ -7,11 +7,29 @@
 #include "vector"
 #include <stdexcept>
 #include <cstdio>
+#include <string>
+#include <iostream>
 
 using namespace std;
+
 ProfesorRepository::ProfesorRepository(FILE *file,string fileName) {
     this->fileName = fileName+".txt";
     this->file = file;
+
+   file = fopen(this->fileName.c_str(), "a");
+  if (file == nullptr) {
+    cout<<"Error en la creacion del archivo"<<endl;
+  }
+  long isNew = ftell(file);
+  if(isNew == 0) {
+    cout<<"Archivo creado"<<endl;
+
+  }
+  else {
+    cout<<"El archivo ya existe"<<endl;
+  }
+
+  fclose(file);
 };
 
 FILE* ProfesorRepository::getFile(string mode) {
