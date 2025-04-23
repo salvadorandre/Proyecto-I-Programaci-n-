@@ -13,7 +13,7 @@ struct Profesor {
       char nombre[50];
       bool active;
       string getDetails() {
-            return nombre;
+            return "ID: "+to_string(idProfesor)+" nombre:"+ nombre ;
       }
 };
 
