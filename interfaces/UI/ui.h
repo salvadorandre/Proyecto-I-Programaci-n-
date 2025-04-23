@@ -19,11 +19,18 @@ private:
     AsignarController asigController;
 
 public:
+<<<<<<< HEAD
     UI(EstudianteController estuController, ProfesorController profeController,AsignarController asignarController);
+=======
+    UI(EstudianteController estuController, ProfesorController profeController);
+    void setColor(int color);
+>>>>>>> main
     void menuPrincipal();
     void menuEstudiante();
     void menuProfesor();
     void reporteGeneral();
+    void reporteEstudiantes();
+    void reporteProfesores();
 };
 
 #endif //PROYECTOPROGRAMACION_UI_H

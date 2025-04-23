@@ -28,7 +28,6 @@ int main() {
     AsignarService asignarService(estuService,profeService,asigRepo);
     AsignarController asignaController(asignarService);
 
-    cout<<"DAVID X JHON, JUNTOS POR SIEMPRE"<<endl;
     UI interfazGrafica(estuController, profesorController,asignarService);
     interfazGrafica.menuPrincipal();
 
