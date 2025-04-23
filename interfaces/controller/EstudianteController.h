@@ -10,8 +10,9 @@ public:
     EstudianteController(EstudianteService estudianteService);
 
     void buscarEstudiante();
-    void listaEstudiantes();
+    void listaEstudiantesOrdenados();
     void crearEstudiantes();
+    void buscarPorNombre();
 };
 
 #endif //ESTUDIANTECONTROLLER_H
