@@ -7,16 +7,14 @@
 #include <chrono>
 
 #include "../../interfaces/controller/ProfesorController.h"
-#include "../../interfaces/services/ProfesorService.h"
-#include "../../interfaces/repository/ProfesorRepository.h"
-
 #include "../../interfaces/controller/EstudianteController.h"
-#include "../../interfaces/services/EstudianteService.h"
-#include "../../interfaces/repository/EstudianteRepository.h"
+#include "../../interfaces/controller/AsignarController.h"
+
+
 using namespace std;
 
 
-UI::UI(EstudianteController estuController, ProfesorController profeController): estuController(estuController), profesorController(profeController)
+UI::UI(EstudianteController estuController, ProfesorController profeController,AsignarController asignarController): estuController(estuController), profesorController(profeController),asigController(asignarController)
 
 
 
@@ -63,7 +61,7 @@ void UI::menuPrincipal() {
                 menuEstudiante();
                 break;
             case 2:
-
+                reporteGeneral();
                 break;
             case 3:
                 setColor(11);
@@ -166,7 +164,7 @@ void UI::menuProfesor() {
                 system("cls");
                 break;
             case 3:
-                //Pendiente XD
+                asigController.asignar();
                 break;
             case 4:
                 system("cls");
@@ -207,7 +205,7 @@ void UI::reporteGeneral() {
 
                 break;
             case 3:
-                //Pendiente XD
+                asigController.listarAsignaciones();
                 break;
             case 4:
                 cout<<"gracias por utilizar el programa"<<endl;

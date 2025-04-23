@@ -3,12 +3,10 @@
 
 //Profesores
 #include "../../interfaces/controller/ProfesorController.h"
-#include "../../interfaces/services/ProfesorService.h"
-#include "../../interfaces/repository/ProfesorRepository.h"
+
 //Estudiantes
 #include "../../interfaces/controller/EstudianteController.h"
-#include "../../interfaces/services/EstudianteService.h"
-#include "../../interfaces/repository/EstudianteRepository.h"
+#include "../../interfaces/controller/AsignarController.h"
 
 class UI {
 private:
@@ -18,9 +16,10 @@ private:
 
     //Variables para los estudiantes
     EstudianteController estuController;
+    AsignarController asigController;
 
 public:
-    UI(EstudianteController estuController, ProfesorController profeController);
+    UI(EstudianteController estuController, ProfesorController profeController,AsignarController asignarController);
     void setColor(int color);
     void menuPrincipal();
     void menuEstudiante();

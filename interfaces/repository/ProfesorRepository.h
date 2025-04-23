@@ -16,7 +16,7 @@ class ProfesorRepository {
 
     public:
       ProfesorRepository(FILE *file,string fileName);
-      bool putProfesor(Profesor profesor);
+      bool postProfesor(Profesor profesor);
       Profesor getProfesorById(int idProfesor);
       vector<Profesor> getAllProfesor();
       bool deleteProfesor(int idProfesor);
