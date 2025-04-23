@@ -15,7 +15,7 @@ ProfesorService::ProfesorService(const ProfesorRepository &repository): reposito
 
 string ProfesorService::crearProfesor(Profesor profesor) {
     try {
-        repository.putProfesor(profesor);
+        repository.postProfesor(profesor);
         return "Se ah creado un nuevo profesor: "+profesor.getDetails(); ;
     }catch (invalid_argument e) {
         cout << e.what() << endl;
