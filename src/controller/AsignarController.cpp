@@ -20,9 +20,9 @@ void AsignarController::asignar(){
     int idProfesor = 0;
     int idEstudiante = 0;
 
-    cout<<"profesor"<<endl;
+    cout<<"Ingrese el Id del profesor a asignar: "<<endl;
     cin>>idProfesor;
-    cout<<"estudiante"<<endl;
+    cout<<"Ingrese el Id del Estudiante"<<endl;
     cin>>idEstudiante;
 
     string mesagge = service.AsignarProfesor(idProfesor, idEstudiante);
@@ -32,6 +32,7 @@ void AsignarController::asignar(){
   }
 }
 void AsignarController::listarAsignaciones(){
+  cout<<"Lista de asignaciones"<<endl;
   for(auto asignacion: service.listaDeAsignaciones()){
     cout<<asignacion<<endl;
     }

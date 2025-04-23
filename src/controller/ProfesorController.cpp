@@ -29,11 +29,11 @@ void ProfesorController::listaProfesores() {
 void ProfesorController::crearProfesores() {
     Profesor profesor;
 
-    cout << "ingrese un Id"<< endl;
+    cout << "coloque un Id para el profesor: "<< endl;
     cin>>profesor.idProfesor;
     profesor.active=true;
     cin.ignore();
-    cout << "ingrese su nombre" << endl;
+    cout << "ingrese su nombre: " << endl;
     cin.getline(profesor.nombre,sizeof(profesor.nombre));
     cout << "Creando profesor..." << endl;
     profesorService.crearProfesor(profesor);
