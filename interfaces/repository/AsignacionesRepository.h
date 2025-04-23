@@ -20,6 +20,9 @@ class AsignacionesRepository {
 
 public:
     AsignacionesRepository(FILE *file,string fileName);
+
+    FILE *getFile(string mode);
+
     int autoIncrement();
     bool coincidencia(int idProfesor,int idEstudiante);
     bool postAsignacion(Profesor profesor, Estudiante estudiante);

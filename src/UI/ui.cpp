@@ -54,8 +54,6 @@ void UI::menuPrincipal() {
         setColor(14); // amarillo
         escribirLento("Ingrese una opcion: ");
         cin>>opc;
-        asigController.asignar();
-        //asigController.listarAsignaciones();
 
         switch(opc) {
             case 1:
@@ -63,7 +61,7 @@ void UI::menuPrincipal() {
                 menuEstudiante();
                 break;
             case 2:
-
+                reporteGeneral();
                 break;
             case 3:
                 setColor(11);
@@ -159,7 +157,7 @@ void UI::menuProfesor() {
                 profesorController.buscarProfesor();
                 break;
             case 3:
-                //Pendiente XD
+                asigController.asignar();
                 break;
             case 4:
                 system("cls");
@@ -195,7 +193,7 @@ void UI::reporteGeneral() {
 
                 break;
             case 3:
-                //Pendiente XD
+                asigController.listarAsignaciones();
                 break;
             case 4:
                 cout<<"gracias por utilizar el programa"<<endl;

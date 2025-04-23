@@ -20,7 +20,7 @@ int main() {
     ProfesorController profesorController(profeService);
 
 //Variables para los estudiantes
-    EstudianteRepository estuRepo(archivo,"bdEstudiante");
+    EstudianteRepository estuRepo(archivo2,"bdEstudiante");
     EstudianteService estuService(estuRepo);
     EstudianteController estuController(estuService);
 
