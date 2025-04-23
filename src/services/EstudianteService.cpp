@@ -36,14 +36,45 @@ Estudiante EstudianteService::obtenerEstudiante(int idEstudiante) {
     }
 }
 
-vector<Estudiante> EstudianteService::listaEstudiantes() {
+vector<Estudiante> EstudianteService::obtenerEstudiantesPorNombre(string nombre) {
     try {
-        vector<Estudiante>list = repository.getAllEstudiante();
-        return  list;
-    }catch (invalid_argument e) {
+        vector<Estudiante> estudiantes = repository.getEstudiantesByNombre(nombre);
+
+        if (estudiantes.empty()) {
+            throw invalid_argument("No se encontraron estudiantes con ese nombre.");
+        }
+
+        return estudiantes;
+    } catch (invalid_argument& e) {
         cout << e.what() << endl;
+        return {};
     }
 }
+
+
+vector<Estudiante> EstudianteService::listaEstudiantesOrdenados() {
+    try {
+        vector<Estudiante> list = repository.getAllEstudiante();
+
+        for (int i = 1; i < list.size(); ++i) {
+            Estudiante key = list[i];
+            int j = i - 1;
+
+            while (j >= 0 && list[j].idEstudiante > key.idEstudiante) {
+                list[j + 1] = list[j];
+                j--;
+            }
+
+            list[j + 1] = key;
+        }
+
+        return list;
+    } catch (invalid_argument& e) {
+        cout << e.what() << endl;
+        return {};
+    }
+}
+
 
 string EstudianteService::eliminarEstudiante(int idEstudiante) {
     try {

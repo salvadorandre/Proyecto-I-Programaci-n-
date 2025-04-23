@@ -92,7 +92,7 @@ bool EstudianteRepository::deleteEstudiante(int idEstudiante) {
 //    while(fread(&estudianteDelete, sizeof(Estudiante), 1, file)) {
 //        if (estudianteDelete.idEstudiante == idEstudiante) {
 //            estudianteDelete.active = false;
-//            fseek(file, -sizeof(Estudiante), SEEK_CUR);  // Coloca el puntero en la posición correcta para sobrescribir
+//            fseek(file, -sizeof(Estudiante), SEEK_CUR);  //
 //            fwrite(&estudianteDelete, sizeof(Estudiante), 1, file);
 //            fclose(file);
 //            return true;
@@ -102,3 +102,23 @@ bool EstudianteRepository::deleteEstudiante(int idEstudiante) {
     fclose(file);
     return false;
 }
+
+
+//Retornar estudiantes por ID
+vector<Estudiante> EstudianteRepository::getEstudiantesByNombre(string nombre) {
+    vector<Estudiante> estudiantesCoinciden;
+    vector<Estudiante> todos = getAllEstudiante();
+
+    for (const Estudiante& estudiante : todos) {
+        if (estudiante.active) {
+            string nombreEst = string(estudiante.nombre); // convertir char[] a string
+            if (nombreEst.find(nombre) != string::npos) {
+                estudiantesCoinciden.push_back(estudiante);
+            }
+        }
+    }
+
+    return estudiantesCoinciden;
+}
+
+

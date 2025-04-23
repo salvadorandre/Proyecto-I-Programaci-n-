@@ -20,6 +20,7 @@ public:
     Estudiante getEstudianteById(int idEstudiante);
     vector<Estudiante> getAllEstudiante();
     bool deleteEstudiante(int idEstudiante);
+    vector<Estudiante> getEstudiantesByNombre(string nombre);
     FILE* getFile(string metod);
 };
 

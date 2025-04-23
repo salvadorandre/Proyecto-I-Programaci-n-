@@ -23,9 +23,9 @@ EstudianteController::EstudianteController(EstudianteService estudianteService):
         cout << "Promedio: " << estudianteObtenido.promedio << endl;
     }
 
-    void EstudianteController::listaEstudiantes() {
+    void EstudianteController::listaEstudiantesOrdenados() {
         cout << "Listando estudiantes..." << endl;
-        vector<Estudiante> lista = estudianteService.listaEstudiantes();
+        vector<Estudiante> lista = estudianteService.listaEstudiantesOrdenados();
         for (int i = 0; i < lista.size(); i++) {
             cout << "Nombre: " << lista[i].nombre << endl;
             cout << "Edad: " << lista[i].edad << endl;
@@ -57,6 +57,26 @@ EstudianteController::EstudianteController(EstudianteService estudianteService):
         cout << "Creando estudiante..." << endl;
         estudianteService.crearEstudiante(estudiante);
     }
+
+    void EstudianteController::buscarPorNombre() {
+        string nombre;
+
+        cout << "Ingrese el nombre para buscar coincidencias" << endl;
+        cin >> nombre;
+
+        vector<Estudiante> lista = estudianteService.obtenerEstudiantesPorNombre(nombre);
+
+        for (int i = 0; i < lista.size(); i++) {
+            cout << "ID: " << lista[i].idEstudiante << endl;
+            cout << "Nombre: " << lista[i].nombre << endl;
+            cout << "Apellido: " << lista[i].grado << endl;
+        }
+
+    }
+
+
+
+
 
 
 
