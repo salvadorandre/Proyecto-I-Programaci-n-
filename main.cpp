@@ -20,7 +20,6 @@ int main() {
     EstudianteService estuService(estuRepo);
     EstudianteController estuController(estuService);
 
-    cout<<"DAVID X JHON, JUNTOS POR SIEMPRE"<<endl;
     UI interfazGrafica(estuController, profesorController);
     interfazGrafica.menuPrincipal();
 
