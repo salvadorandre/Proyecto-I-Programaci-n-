@@ -2,11 +2,12 @@
 #include <iostream>
 #define byte win_byte_override
 #include <windows.h>
-#include <mmsystem.h>
+#include <MMsystem.h>
 #include <thread>
 #include <chrono>
 #include <stdio.h>
 #include "dos.h"
+
 #include "../../interfaces/controller/ProfesorController.h"
 #include "../../interfaces/controller/EstudianteController.h"
 #include "../../interfaces/controller/AsignarController.h"
@@ -65,6 +66,7 @@ void UI::setColor(int color) {
 }
 
 void UI::menuPrincipal() {
+
     pantallaCarga();
     system("pause");
     system("cls");
@@ -98,7 +100,8 @@ void UI::menuPrincipal() {
                 menuProfesor();
                 break;
             case 4:
-                
+                system("cls");
+                setColor(11);
                 break;
             default:
                 cout<<"Opcion incorrecta"<<endl;
@@ -134,23 +137,27 @@ void UI::menuEstudiante() {
                 system("cls");
                 setColor(11);
                 estuController.crearEstudiantes();
+                system("pause");
+                system("cls");
                 break;
             case 2:
                 setColor(11);
                 //Busqueda del estudiante.
                 system("cls");
-
                 estuController.buscarEstudiante();
                 system("pause");
                 system("cls");
-
                 break;
             case 3:
+                system("cls");
+                setColor(11);
                 menuPrincipal();
                 break;
             default:
-                cout<<"Opcion incorrecta"<<endl;
+                system("cls");
                 setColor(11);
+                cout<<"Opcion incorrecta"<<endl;
+
                 break;
 
 
@@ -201,13 +208,15 @@ void UI::menuProfesor() {
                 break;
             case 4:
                 system("cls");
+                setColor(11);
                 menuPrincipal();
                 break;
             default:
                 cout<<"Opcion incorrecta"<<endl;
-                setColor(11);
 
                 system("cls");
+                setColor(11);
+
         }
     }while(opc!=4);
 }
@@ -246,10 +255,14 @@ void UI::reporteGeneral() {
                 asigController.listarAsignaciones();
                 break;
             case 4:
-                cout<<"gracias por utilizar el programa"<<endl;
+                system("cls");
+                setColor(11);
+                menuPrincipal();
+
                 break;
             default:
-                cout<<"Opcion incorrecta ojete"<<endl;
+                system("cls");
+                setColor(11);
         }
     }while(opc !=4);
 }
@@ -290,9 +303,15 @@ void UI::reporteEstudiantes() {
                 break;
             case 3:
                 cout<<"gracias por utilizar el programa"<<endl;
+                setColor(11);
+                reporteGeneral();
+                system("cls");
                 break;
             default:
                 cout<<"Opcion incorrecta..."<<endl;
+                system("cls");
+                setColor(11);
+
         }
     }while(opc !=3);
 
@@ -300,37 +319,50 @@ void UI::reporteEstudiantes() {
 
 void UI::reporteProfesores() {
     int opc;
+    system("cls");
+    setColor(11);
     do {
         cout << "|----------------------------|\n";
         cout << "|     REPORTE PROFESORES     |\n";
         cout << "|----------------------------|\n";
-        cout << "| 1. Reporte Estudiantes     |\n";
-        cout << "| 2. Reporte Profesores      |\n";
-        cout << "| 3. Reporte de Asignaciones |\n";
-        cout << "| 4. Salir                   |\n";
+        cout << "| 1. Buscar Profesor         |\n";
+        cout << "| 2. Todos los Profesores    |\n";
+        cout << "| 3. Salir                   |\n";
         cout << "|----------------------------|\n";
         cout << "\n";
 
+        setColor(14);
+        escribirLento("Ingrese una opcion: ");
 
-
-        cout<<"Ingrese una opcion: "<<endl;
         cin>>opc;
 
         switch(opc) {
             case 1:
-
+                setColor(11);
+                system("cls");
+                profesorController.buscarProfesor();
+                system("pause");
+                system("cls");
                 break;
             case 2:
-
+                setColor(11);
+                system("cls");
+                profesorController.listaProfesores();
+                system("pause");
+                system("cls");
                 break;
             case 3:
-                asigController.listarAsignaciones();
-                break;
-            case 4:
                 cout<<"gracias por utilizar el programa"<<endl;
+                setColor(11);
+                reporteGeneral();
+                system("cls");
                 break;
             default:
-                cout<<"Opcion incorrecta ojete"<<endl;
+                cout<<"Opcion incorrecta..."<<endl;
+                system("cls");
+                setColor(11);
+                break;
         }
     }while(opc !=4);
 }
+
