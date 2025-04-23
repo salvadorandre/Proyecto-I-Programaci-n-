@@ -83,8 +83,8 @@ void UI::menuPrincipal() {
 
 void UI::menuEstudiante() {
     int opc;
+    system("cls");
     do{
-        system("cls");
         cout << "|----------------------------|\n";
         cout << "|     MENU ESTUDIANTES       |\n";
         cout << "|----------------------------|\n";
@@ -107,10 +107,14 @@ void UI::menuEstudiante() {
                 estuController.crearEstudiantes();
                 break;
             case 2:
-                system("cls");
                 setColor(11);
                 //Busqueda del estudiante.
+                system("cls");
+
                 estuController.buscarEstudiante();
+                system("pause");
+                system("cls");
+
                 break;
             case 3:
                 menuPrincipal();
@@ -118,8 +122,9 @@ void UI::menuEstudiante() {
             default:
                 cout<<"Opcion incorrecta"<<endl;
                 setColor(11);
+                break;
 
-                system("cls");
+
         }
     }while(opc != 3);
 }
@@ -157,6 +162,8 @@ void UI::menuProfesor() {
                 system("cls");
                 setColor(11);
                 profesorController.buscarProfesor();
+                system("pause");
+                system("cls");
                 break;
             case 3:
                 //Pendiente XD
@@ -177,11 +184,16 @@ void UI::menuProfesor() {
 void UI::reporteGeneral() {
     int opc;
     do {
-        cout<<"----------\tReporte General----------"<<endl;
-        cout<<"1. Reporte Estudiantes"<<endl;
-        cout<<"2. Reporte Profesores"<<endl;
-        cout<<"3. Reporte de Asignaciones"<<endl;
-        cout<<"4. Salir"<<endl;
+        cout << "|----------------------------|\n";
+        cout << "|     MENU PROFESORES        |\n";
+        cout << "|----------------------------|\n";
+        cout << "| 1. Reporte Estudiantes     |\n";
+        cout << "| 2. Reporte Profesores      |\n";
+        cout << "| 3. Reporte de Asignaciones |\n";
+        cout << "| 4. Salir                   |\n";
+        cout << "|----------------------------|\n";
+        cout << "\n";
+
 
 
         cout<<"Ingrese una opcion: "<<endl;

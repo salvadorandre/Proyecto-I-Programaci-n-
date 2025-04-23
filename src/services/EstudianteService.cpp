@@ -51,6 +51,6 @@ string EstudianteService::eliminarEstudiante(int idEstudiante) {
         return "Estudiante eliminado exitosamente.";
     }catch (invalid_argument e) {
         cout << e.what() << endl;
-        return "Error, no se puedo eliminar al estudiante" << endl;
+        return "Error, no se puedo eliminar al estudiante \n";
     }
 }
