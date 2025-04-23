@@ -68,6 +68,7 @@ void UI::menuPrincipal() {
                 menuProfesor();
                 break;
             case 4:
+                
                 break;
             default:
                 cout<<"Opcion incorrecta"<<endl;
