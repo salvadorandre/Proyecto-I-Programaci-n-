@@ -14,7 +14,8 @@ public:
     EstudianteService(const EstudianteRepository &estudianteRepository);
     string crearEstudiante(Estudiante estudiante);
     Estudiante obtenerEstudiante(int idEstudiante);
-    vector<Estudiante> listaEstudiantes();
+    vector<Estudiante> obtenerEstudiantesPorNombre(string nombre);
+    vector<Estudiante> listaEstudiantesOrdenados();
     string eliminarEstudiante(int idEstudiante);
 };
 
