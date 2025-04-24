@@ -11,6 +11,7 @@ public:
 
     void buscarProfesor();
     void listaProfesores();
+    void listaProfesores(int curso);
     void crearProfesores();
 };
 

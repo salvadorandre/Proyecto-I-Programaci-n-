@@ -23,6 +23,7 @@ class AsignarController {
           AsignarController(AsignarService Asignarservice);
           void asignar();
           void listarAsignaciones();
+          void listarAsignaciones(int curso);
 };
 
 

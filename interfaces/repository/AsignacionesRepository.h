@@ -25,7 +25,7 @@ public:
 
     int autoIncrement();
     bool coincidencia(int idProfesor,int idEstudiante);
-    bool postAsignacion(Profesor profesor, Estudiante estudiante);
+    bool postAsignacion(Profesor profesor, Estudiante estudiante,int idCurso);
     vector<Asignacion> getAllAsignaciones();
 };
 

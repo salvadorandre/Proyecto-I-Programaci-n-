@@ -81,7 +81,7 @@ bool AsignacionesRepository::coincidencia(int idProfesor, int idEstudiante) {
     return coincidencia;
 }
 
-bool AsignacionesRepository::postAsignacion(Profesor profesor, Estudiante estudiante) {
+bool AsignacionesRepository::postAsignacion(Profesor profesor, Estudiante estudiante,int idCurso) {
 
     if (coincidencia(profesor.idProfesor, estudiante.idEstudiante)) {
 
@@ -95,6 +95,7 @@ bool AsignacionesRepository::postAsignacion(Profesor profesor, Estudiante estudi
     asignacion.idProfesor = profesor.idProfesor;
     asignacion.idEstudiante = estudiante.idEstudiante;
     asignacion.idAsignacion = autoIncrement();
+    asignacion.idCurso = idCurso;
 
     if (fwrite(&asignacion, sizeof(Asignacion), 1, fileNew) != 1) {
         fclose(fileNew);
