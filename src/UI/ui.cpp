@@ -51,7 +51,15 @@ void pantallaCarga(){
         }
 
     }
-    printf("\n\n carga completa del programa");
+    printf(
+       "\n\nCarga completa del programa ->\n"
+       "Realizado y distribuido por QX-code --La clave del exito--\n"
+       "UI/UX: Andre Salvador\n"
+       "Software Engineer: Daniel Vasquez\n"
+       "Software Architect: Edwin Baquiax\n"
+       "V.1.0 demo\n"
+   );
+
 }
 
 void escribirLento(const string& texto, int delay = 50) {
