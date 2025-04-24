@@ -11,6 +11,7 @@ struct Asignacion{
   int idAsignacion;
   int idProfesor;
   int idEstudiante;
+  int idCurso;
 };
 
 #endif //ASIGNACION_H

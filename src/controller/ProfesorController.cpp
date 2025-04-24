@@ -1,7 +1,7 @@
 #include "../../interfaces/controller/ProfesorController.h"
 #include "../../interfaces/services/ProfesorService.h"
 #include <iostream>
-
+#include "../utils/Cursos.h"
 using namespace std;
 
 ProfesorController::ProfesorController(ProfesorService profesorService)
@@ -18,20 +18,47 @@ void ProfesorController::buscarProfesor() {
 }
 
 void ProfesorController::listaProfesores() {
-    cout << "Listando profesores..." << endl;
+    cout << "Listando todos los  profesores..." << endl;
     vector<Profesor> lista = profesorService.listaProfesores();
     for ( auto& profesor : lista) {
         cout << profesor.getDetails() << endl;
     }
 
+
+}
+
+void ProfesorController::listaProfesores(int curso) {
+    Cursos cursos;
+    string materia = cursos.getCursos(curso);
+    cout << "Listando todos los profesores del curso: " <<materia<< endl;
+    vector<Profesor> lista = profesorService.listaProfesores();
+    if (lista.size() == 0) {
+        cout << "Profesores lista vacia" << endl;
+        return;
+    }
+    int materiaId = cursos.getCursosId(curso);
+    for ( auto& profesor : lista) {
+      if (profesor.fkCurso == materiaId) {
+          cout << profesor.getDetails() << endl;
+      }
+    }
+
+
 }
 
 void ProfesorController::crearProfesores() {
     Profesor profesor;
-
+    Cursos curso;
     cout << "coloque un Id para el profesor: "<< endl;
     cin>>profesor.idProfesor;
     profesor.active=true;
+    profesor.fkCurso= curso.getCursos();
+    cout << "ingrese la capacidad maxima de alumnos de este profesor " << endl;
+    cin>>profesor.alumnMax;
+    if (profesor.alumnMax > 100 || profesor.alumnMax < 1) {
+        cout<<"capacidad no soportada"<< endl;
+        profesor.alumnMax = 10;
+    }
     cin.ignore();
     cout << "ingrese su nombre: " << endl;
     cin.getline(profesor.nombre,sizeof(profesor.nombre));

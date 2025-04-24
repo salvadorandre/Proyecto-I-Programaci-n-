@@ -19,8 +19,9 @@ class AsignarService {
 
   public:
     AsignarService(EstudianteService service, ProfesorService profesorService,AsignacionesRepository AsignacionesRepository);
-    string AsignarProfesor(int idProfesor,int idEstudiante);
+    string AsignarProfesor(int idProfesor,int idEstudiante,int idCurso);
     vector<string> listaDeAsignaciones();
+  vector<string> listaDeAsignaciones(int curso);
 
 
 
