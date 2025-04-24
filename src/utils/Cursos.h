@@ -21,12 +21,16 @@ class Cursos {
     };
       int getCursos(){
         int curso =0;
+        int id=0;
+
         cout << "Eliga un curso" << endl;
         for(const string& s : list){
-          cout <<"Cursos: "<< s << endl;
+
+          cout <<"Cursos:"<< to_string(id)<<" "<<s << endl;
+          id++;
         }
         cin >> curso;
-        curso -=1;
+
         if(curso > list.size() || curso < 0){
           curso = 0;
         }

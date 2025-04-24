@@ -11,6 +11,7 @@
 #include "../../interfaces/controller/ProfesorController.h"
 #include "../../interfaces/controller/EstudianteController.h"
 #include "../../interfaces/controller/AsignarController.h"
+#include "../utils/Cursos.h"
 
 
 using namespace std;
@@ -66,8 +67,12 @@ void UI::setColor(int color) {
 }
 
 void UI::menuPrincipal() {
+    static int totalCargas = 0;//un poco de singleton
 
-    pantallaCarga();
+    if (totalCargas <= 0) {
+        pantallaCarga();
+        totalCargas++;
+    }
     system("pause");
     system("cls");
     int opc;
@@ -76,9 +81,9 @@ void UI::menuPrincipal() {
         cout << "|----------------------------|\n";
         cout << "|     MENU PRINCIPAL         |\n";
         cout << "|----------------------------|\n";
-        cout << "| 1. Nuevo Estudiante        |\n";
-        cout << "| 2. Reportes                |\n";
-        cout << "| 3. Asignar Profesor        |\n";
+        cout << "| 1. Menu Estudiante         |\n";
+        cout << "| 2. Menu Reportes           |\n";
+        cout << "| 3. Menu Profesor           |\n";
         cout << "| 4. Salir                   |\n";
         cout << "|----------------------------|\n";
 
@@ -101,9 +106,11 @@ void UI::menuPrincipal() {
                 break;
             case 4:
                 system("cls");
+                exit(0);
                 setColor(11);
                 break;
             default:
+
                 cout<<"Opcion incorrecta"<<endl;
                 setColor(11);
 
@@ -177,7 +184,7 @@ void UI::menuProfesor() {
         cout << "|----------------------------|\n";
         cout << "| 1. Crear Profesor          |\n";
         cout << "| 2. Buscar Profesor         |\n";
-        cout << "| 3. Asignar Profesor        |\n";
+        cout << "| 3. Asignacion              |\n";
         cout << "| 4. Salir                   |\n";
         cout << "|----------------------------|\n";
         cout << "\n";
@@ -192,6 +199,8 @@ void UI::menuProfesor() {
                 system("cls");
                 setColor(11);
                 profesorController.crearProfesores();
+                 system("pause");
+            system("cls");
                 break;
             case 2:
                 //Metodo para buscar al profe
@@ -205,6 +214,8 @@ void UI::menuProfesor() {
                 system("cls");
                 setColor(11);
                 asigController.asignar();
+                system("pause");
+            system("cls");
                 break;
             case 4:
                 system("cls");
@@ -224,18 +235,21 @@ void UI::menuProfesor() {
 void UI::reporteGeneral() {
     int opc;
     setColor(11);
+    Cursos cursos;
+    int curso =0;
 
     system("cls");
 
     do {
-        cout << "|----------------------------|\n";
-        cout << "|     REPORTE GENERAL        |\n";
-        cout << "|----------------------------|\n";
-        cout << "| 1. Reporte Estudiantes     |\n";
-        cout << "| 2. Reporte Profesores      |\n";
-        cout << "| 3. Reporte de Asignaciones |\n";
-        cout << "| 4. Salir                   |\n";
-        cout << "|----------------------------|\n";
+        cout << "|--------------------------------------|\n";
+        cout << "|     REPORTE GENERAL                  |\n";
+        cout << "|--------------------------------------|\n";
+        cout << "| 1. Reporte Estudiantes               |\n";
+        cout << "| 2. Reporte Profesores                |\n";
+        cout << "| 3. Reporte de todas las Asignaciones |\n";
+        cout << "| 4. Reporte de Asignaciones por curso |\n";
+        cout << "| 5. Salir                             |\n";
+        cout << "|--------------------------------------|\n";
         cout << "\n";
 
 
@@ -253,18 +267,26 @@ void UI::reporteGeneral() {
                 break;
             case 3:
                 asigController.listarAsignaciones();
+                system("pause");
+                system("cls");
                 break;
             case 4:
+                curso= cursos.getCursos();
+                asigController.listarAsignaciones(curso);
+                system("pause");
+                system("cls");
+                break;
+            case 5:
                 system("cls");
                 setColor(11);
                 menuPrincipal();
 
-                break;
+            break;
             default:
                 system("cls");
                 setColor(11);
         }
-    }while(opc !=4);
+    }while(opc !=5);
 }
 
 void UI::reporteEstudiantes() {
@@ -272,13 +294,13 @@ void UI::reporteEstudiantes() {
     system("cls");
     setColor(11);
     do {
-        cout << "|----------------------------|\n";
-        cout << "|     REPORTE ESTUDIANTES    |\n";
-        cout << "|----------------------------|\n";
-        cout << "| 1. Buscar Estudiante       |\n";
-        cout << "| 2. Todos los Estudiantes   |\n";
-        cout << "| 3. Salir                   |\n";
-        cout << "|----------------------------|\n";
+        cout << "|--------------------------------|\n";
+        cout << "|     REPORTE ESTUDIANTES        |\n";
+        cout << "|--------------------------------|\n";
+        cout << "| 1. Buscar Estudiante por nombre|\n";
+        cout << "| 2. Todos los Estudiantes       |\n";
+        cout << "| 3. Salir                       |\n";
+        cout << "|--------------------------------|\n";
         cout << "\n";
 
         setColor(14);
@@ -319,16 +341,19 @@ void UI::reporteEstudiantes() {
 
 void UI::reporteProfesores() {
     int opc;
+    Cursos cursos;
+    int curso=0;
     system("cls");
     setColor(11);
     do {
-        cout << "|----------------------------|\n";
-        cout << "|     REPORTE PROFESORES     |\n";
-        cout << "|----------------------------|\n";
-        cout << "| 1. Buscar Profesor         |\n";
-        cout << "| 2. Todos los Profesores    |\n";
-        cout << "| 3. Salir                   |\n";
-        cout << "|----------------------------|\n";
+        cout << "|---------------------------------------|\n";
+        cout << "|     REPORTE PROFESORES                |\n";
+        cout << "|---------------------------------------|\n";
+        cout << "| 1. Buscar Profesor                    |\n";
+        cout << "| 2. Todos los Profesores               |\n";
+        cout << "| 3. Todos los Profesores segun curso   |\n";
+        cout << "| 4. Salir                              |\n";
+        cout << "|---------------------------------------|\n";
         cout << "\n";
 
         setColor(14);
@@ -352,11 +377,20 @@ void UI::reporteProfesores() {
                 system("cls");
                 break;
             case 3:
-                cout<<"gracias por utilizar el programa"<<endl;
+
                 setColor(11);
-                reporteGeneral();
                 system("cls");
-                break;
+                curso = cursos.getCursos();
+                profesorController.listaProfesores(curso);
+                system("pause");
+                system("cls");
+            break;
+            case 4:
+                cout<<"gracias por utilizar el programa"<<endl;
+            setColor(11);
+            reporteGeneral();
+            system("cls");
+            break;
             default:
                 cout<<"Opcion incorrecta..."<<endl;
                 system("cls");

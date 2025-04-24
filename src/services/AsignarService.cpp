@@ -16,7 +16,7 @@ AsignarService::AsignarService(EstudianteService EstudianteService, ProfesorServ
     :IEstudianteService(EstudianteService),IprofesorService(profesorService),repo(AsignacionesRepository) {}
 
 string AsignarService::AsignarProfesor(int idProfesor,int idEstudiante, int idCurso){
-  try{
+
 
       bool existen = repo.coincidencia(idProfesor,idEstudiante);
       if(existen){
@@ -25,13 +25,22 @@ string AsignarService::AsignarProfesor(int idProfesor,int idEstudiante, int idCu
 
       Profesor profesor = IprofesorService.obtenerProfesor(idProfesor);
       Estudiante estudiante = IEstudianteService.obtenerEstudiante(idEstudiante);
-
-      cout<<estudiante.nombre<<endl;
+      int maximoALumnos=1;
+      for (auto asignacion: repo.getAllAsignaciones()) {
+          if (asignacion.idProfesor == idProfesor) {
+              maximoALumnos++;
+          }
+      }
+      if(profesor.alumnMax < maximoALumnos){
+          throw invalid_argument("Se alcanzo la capacidad maxima del profesor: " + to_string(profesor.alumnMax));
+      }
       if(profesor.idProfesor == -1 || estudiante.idEstudiante == -1){
           throw invalid_argument("No existe un profesor/estudiante con ese Id");
       }
 
-
+      if(idCurso != profesor.fkCurso){
+          throw invalid_argument("El profesor no es de ese curso: "+profesor.getDetails());
+      }
       if(estudiante.promedio < 61){
           throw invalid_argument("El promedio del estudiante no es suficiente para asignarle un profesor");
       }
@@ -43,19 +52,19 @@ string AsignarService::AsignarProfesor(int idProfesor,int idEstudiante, int idCu
 
 
 
-    }catch(exception& e){
-        return e.what();
-    }
+
 }
 
 vector<string> AsignarService::listaDeAsignaciones(){
-   try{
+
        vector<string> listaDeAsignaciones;
        vector<Estudiante> listaDeEstudiantes;
        vector<Profesor> listaDeProfesores;
 
        vector<Asignacion> asignaciones = repo.getAllAsignaciones();
-
+        if (asignaciones.size() == 0) {
+           throw invalid_argument("Lista vacia..");
+        }
        for(Asignacion asignacion : asignaciones){
            Profesor profesor = IprofesorService.obtenerProfesor(asignacion.idProfesor);
            Estudiante estudiante = IEstudianteService.obtenerEstudiante(asignacion.idEstudiante);
@@ -66,38 +75,35 @@ vector<string> AsignarService::listaDeAsignaciones(){
        }
 
        return listaDeAsignaciones;
-     }catch(exception& e){
-       cout<<e.what()<<endl;
-     }
 
 
 }
-vector<string> AsignarService::listaDeAsignaciones(int curso){
-    try{
-        Cursos cursos;
-        int materia = cursos.getCursosId(curso);
-        vector<string> listaDeAsignaciones;
-        vector<Estudiante> listaDeEstudiantes;
-        vector<Profesor> listaDeProfesores;
+vector<string> AsignarService::listaDeAsignaciones(int curso) {
+    Cursos cursos;
+    int materia = cursos.getCursosId(curso);
+    vector<string> listaDeAsignaciones;
+    vector<Estudiante> listaDeEstudiantes;
+    vector<Profesor> listaDeProfesores;
 
-        vector<Asignacion> asignaciones = repo.getAllAsignaciones();
+    vector<Asignacion> asignaciones = repo.getAllAsignaciones();
+    if (asignaciones.size() == 0) {
+        throw invalid_argument("Lista vacia..");
+    }
+    int total=0;
+    for(Asignacion asignacion : asignaciones){
+        Profesor profesor = IprofesorService.obtenerProfesor(asignacion.idProfesor);
+        Estudiante estudiante = IEstudianteService.obtenerEstudiante(asignacion.idEstudiante);
 
-        for(Asignacion asignacion : asignaciones){
-            Profesor profesor = IprofesorService.obtenerProfesor(asignacion.idProfesor);
-            Estudiante estudiante = IEstudianteService.obtenerEstudiante(asignacion.idEstudiante);
-
-            string nombreProfesor = profesor.nombre;
-            string nombreEstudiante = estudiante.nombre;
-            if (asignacion.idCurso == materia) {
-                listaDeAsignaciones.push_back("ID: "+nombreProfesor + " asignado a-> "+nombreEstudiante+" con el Id: "+to_string(estudiante.idEstudiante ));
-            }
-
+        string nombreProfesor = profesor.nombre;
+        string nombreEstudiante = estudiante.nombre;
+        if (asignacion.idCurso == materia) {
+            listaDeAsignaciones.push_back("ID: "+nombreProfesor + " asignado a-> "+nombreEstudiante+" con el Id: "+to_string(estudiante.idEstudiante ));
+            total++;
         }
 
-        return listaDeAsignaciones;
-    }catch(exception& e){
-        cout<<e.what()<<endl;
     }
-
-
+    if (total == 0) {
+        cout<<"Lista vacia..."<<endl;
+    }
+    return listaDeAsignaciones;
 }

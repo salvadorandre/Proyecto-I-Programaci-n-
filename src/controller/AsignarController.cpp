@@ -26,7 +26,7 @@ void AsignarController::asignar(){
     cin>>idProfesor;
     cout<<"Ingrese el Id del Estudiante"<<endl;
     cin>>idEstudiante;
-    idCurso = cursos.getCursosId(idProfesor);
+    idCurso = cursos.getCursos();
 
     string mesagge = service.AsignarProfesor(idProfesor, idEstudiante,idCurso);
     cout<<mesagge<<endl;
@@ -35,17 +35,25 @@ void AsignarController::asignar(){
   }
 }
 void AsignarController::listarAsignaciones(){
-  cout<<"Lista de asignaciones"<<endl;
-  for(auto asignacion: service.listaDeAsignaciones()){
-    cout<<asignacion<<endl;
-    }
+ try {
+   cout<<"Lista de asignaciones"<<endl;
+   for(auto asignacion: service.listaDeAsignaciones()){
+     cout<<asignacion<<endl;
+   }
+ }catch(exception& e) {
+   cout<<e.what()<<endl;
+ }
 }
 void AsignarController::listarAsignaciones(int curso){
-  Cursos cursos;
-  string materia = cursos.getCursos(curso);
-  cout<<"Lista de asignaciones del curso: "<<materia<<endl;
-  int idCurso = cursos.getCursosId(curso);
-  for(auto asignacion: service.listaDeAsignaciones(idCurso)){
-    cout<<asignacion<<endl;
-  }
+ try {
+   Cursos cursos;
+   string materia = cursos.getCursos(curso);
+   cout<<"Lista de asignaciones del curso: "<<materia<<endl;
+   int idCurso = cursos.getCursosId(curso);
+   for(auto asignacion: service.listaDeAsignaciones(idCurso)){
+     cout<<asignacion<<endl;
+   }
+ }catch(exception& e) {
+   cout<<e.what()<<endl;
+ }
 }

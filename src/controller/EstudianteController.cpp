@@ -11,32 +11,43 @@ EstudianteController::EstudianteController(EstudianteService estudianteService):
 
 
     void EstudianteController::buscarEstudiante() {
-        int id = 0;
-        cout << "Ingrese el ID del estudiante a buscar" << endl;
-        cin >> id;
-        cout << "Buscando estudiante..." << endl;
-        Estudiante estudianteObtenido = estudianteService.obtenerEstudiante(id);
-        cout << "Nombre: " << estudianteObtenido.nombre << endl;
-        cout << "Edad: " << estudianteObtenido.edad << endl;
-        cout << "Género: " << estudianteObtenido.genero << endl;
-        cout << "Grado: " << estudianteObtenido.grado << endl;
-        cout << "Promedio: " << estudianteObtenido.promedio << endl;
-    }
-
-    void EstudianteController::listaEstudiantesOrdenados() {
-        cout << "Listando estudiantes..." << endl;
-        vector<Estudiante> lista = estudianteService.listaEstudiantesOrdenados();
-        for (int i = 0; i < lista.size(); i++) {
-            cout << "Nombre: " << lista[i].nombre << endl;
-            cout << "Edad: " << lista[i].edad << endl;
-            cout << "Género: " << lista[i].genero << endl;
-            cout << "Grado: " << lista[i].grado << endl;
-            cout << "Promedio: " << lista[i].promedio << endl;
-            cout << "-----------------------------" << endl;
+        try {
+            int id = 0;
+            cout << "Ingrese el ID del estudiante a buscar" << endl;
+            cin >> id;
+            cout << "Buscando estudiante..." << endl;
+            Estudiante estudianteObtenido = estudianteService.obtenerEstudiante(id);
+            cout << "Nombre: " << estudianteObtenido.nombre << endl;
+            cout << "Edad: " << estudianteObtenido.edad << endl;
+            cout << "Género: " << estudianteObtenido.genero << endl;
+            cout << "Grado: " << estudianteObtenido.grado << endl;
+            cout << "Promedio: " << estudianteObtenido.promedio << endl;
+        }catch(exception& e) {
+            cout<<e.what()<<endl;
         }
     }
 
+    void EstudianteController::listaEstudiantesOrdenados() {
+      try {
+          cout << "Listando estudiantes..." << endl;
+          vector<Estudiante> lista = estudianteService.listaEstudiantesOrdenados();
+          for (int i = 0; i < lista.size(); i++) {
+              cout << "Nombre: " << lista[i].nombre << endl;
+              cout << "Edad: " << lista[i].edad << endl;
+              cout << "Género: " << lista[i].genero << endl;
+              cout << "Grado: " << lista[i].grado << endl;
+              cout << "Promedio: " << lista[i].promedio << endl;
+              cout << "-----------------------------" << endl;
+          }
+      }catch(exception& e) {
+          cout<<e.what()<<endl;
+      }
+    }
+
     void EstudianteController::crearEstudiantes() {
+        try {
+
+
         Estudiante estudiante;
 
         cout << "Ingrese un ID para el estudiante" << endl;
@@ -56,20 +67,28 @@ EstudianteController::EstudianteController(EstudianteService estudianteService):
        estudiante.active = true;
         cout << "Creando estudiante..." << endl;
         estudianteService.crearEstudiante(estudiante);
+        }catch(exception& e) {
+            cout<<"Error al crear estudiante"<<endl;
+        }
     }
 
     void EstudianteController::buscarPorNombre() {
-        string nombre;
+        try {
 
-        cout << "Ingrese el nombre para buscar coincidencias" << endl;
-        cin >> nombre;
+            string nombre;
 
-        vector<Estudiante> lista = estudianteService.obtenerEstudiantesPorNombre(nombre);
+            cout << "Ingrese el nombre para buscar coincidencias" << endl;
+            cin >> nombre;
 
-        for (int i = 0; i < lista.size(); i++) {
-            cout << "ID: " << lista[i].idEstudiante << endl;
-            cout << "Nombre: " << lista[i].nombre << endl;
-            cout << "Apellido: " << lista[i].grado << endl;
+            vector<Estudiante> lista = estudianteService.obtenerEstudiantesPorNombre(nombre);
+
+            for (int i = 0; i < lista.size(); i++) {
+                cout << "ID: " << lista[i].idEstudiante << endl;
+                cout << "Nombre: " << lista[i].nombre << endl;
+                cout << "Apellido: " << lista[i].grado << endl;
+            }
+        }catch (exception& e) {
+            cout<<e.what()<<endl;
         }
 
     }
