@@ -2,9 +2,11 @@
 #include <iostream>
 #define byte win_byte_override
 #include <windows.h>
-#include <mmsystem.h>
+#include <MMsystem.h>
 #include <thread>
 #include <chrono>
+#include <stdio.h>
+#include "dos.h"
 
 #include "../../interfaces/controller/ProfesorController.h"
 #include "../../interfaces/controller/EstudianteController.h"
@@ -23,6 +25,33 @@ UI::UI(EstudianteController estuController, ProfesorController profeController,A
 
 
 }
+void gotoxy(int x, int y) {
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
+void pantallaCarga(){
+    system("cls");
+    int x, y, i, z, a;
+    gotoxy(35, 10);
+    printf("Cargando...");
+
+
+    for(i = 1; i < 90; i++) {
+        gotoxy(i, 13);
+        printf("%c", 177);
+
+        for(x = 50; x < 70; x++) {
+            for(y = 1; y < 70; y++) {
+                gotoxy(y, 24);
+            }
+        }
+
+    }
+    printf("\n\n carga completa del programa");
+}
 
 void escribirLento(const string& texto, int delay = 50) {
     for (char c : texto) {
@@ -37,6 +66,9 @@ void UI::setColor(int color) {
 }
 
 void UI::menuPrincipal() {
+
+    pantallaCarga();
+    system("pause");
     system("cls");
     int opc;
     setColor(11);
@@ -68,6 +100,8 @@ void UI::menuPrincipal() {
                 menuProfesor();
                 break;
             case 4:
+                system("cls");
+                setColor(11);
                 break;
             default:
                 cout<<"Opcion incorrecta"<<endl;
@@ -81,8 +115,8 @@ void UI::menuPrincipal() {
 
 void UI::menuEstudiante() {
     int opc;
+    system("cls");
     do{
-        system("cls");
         cout << "|----------------------------|\n";
         cout << "|     MENU ESTUDIANTES       |\n";
         cout << "|----------------------------|\n";
@@ -103,21 +137,30 @@ void UI::menuEstudiante() {
                 system("cls");
                 setColor(11);
                 estuController.crearEstudiantes();
+                system("pause");
+                system("cls");
                 break;
             case 2:
-                system("cls");
                 setColor(11);
                 //Busqueda del estudiante.
+                system("cls");
                 estuController.buscarEstudiante();
+                system("pause");
+                system("cls");
                 break;
             case 3:
+                system("cls");
+                setColor(11);
                 menuPrincipal();
                 break;
             default:
-                cout<<"Opcion incorrecta"<<endl;
-                setColor(11);
-
                 system("cls");
+                setColor(11);
+                cout<<"Opcion incorrecta"<<endl;
+
+                break;
+
+
         }
     }while(opc != 3);
 }
@@ -155,59 +198,171 @@ void UI::menuProfesor() {
                 system("cls");
                 setColor(11);
                 profesorController.buscarProfesor();
+                system("pause");
+                system("cls");
                 break;
             case 3:
+                system("cls");
+                setColor(11);
                 asigController.asignar();
                 break;
             case 4:
                 system("cls");
+                setColor(11);
                 menuPrincipal();
                 break;
             default:
                 cout<<"Opcion incorrecta"<<endl;
-                setColor(11);
 
                 system("cls");
+                setColor(11);
+
         }
     }while(opc!=4);
 }
 
 void UI::reporteGeneral() {
     int opc;
-    do {
-        cout<<"----------\tReporte General----------"<<endl;
-        cout<<"1. Reporte Estudiantes"<<endl;
-        cout<<"2. Reporte Profesores"<<endl;
-        cout<<"3. Reporte de Asignaciones"<<endl;
-        cout<<"4. Salir"<<endl;
+    setColor(11);
 
+    system("cls");
+
+    do {
+        cout << "|----------------------------|\n";
+        cout << "|     REPORTE GENERAL        |\n";
+        cout << "|----------------------------|\n";
+        cout << "| 1. Reporte Estudiantes     |\n";
+        cout << "| 2. Reporte Profesores      |\n";
+        cout << "| 3. Reporte de Asignaciones |\n";
+        cout << "| 4. Salir                   |\n";
+        cout << "|----------------------------|\n";
+        cout << "\n";
+
+
+        setColor(14);
 
         cout<<"Ingrese una opcion: "<<endl;
         cin>>opc;
 
         switch(opc) {
             case 1:
-
+                reporteEstudiantes();
                 break;
             case 2:
-
+                reporteProfesores();
                 break;
             case 3:
                 asigController.listarAsignaciones();
                 break;
             case 4:
-                cout<<"gracias por utilizar el programa"<<endl;
+                system("cls");
+                setColor(11);
+                menuPrincipal();
+
                 break;
             default:
-                cout<<"Opcion incorrecta ojete"<<endl;
+                system("cls");
+                setColor(11);
         }
     }while(opc !=4);
 }
 
 void UI::reporteEstudiantes() {
+    int opc;
+    system("cls");
+    setColor(11);
+    do {
+        cout << "|----------------------------|\n";
+        cout << "|     REPORTE ESTUDIANTES    |\n";
+        cout << "|----------------------------|\n";
+        cout << "| 1. Buscar Estudiante       |\n";
+        cout << "| 2. Todos los Estudiantes   |\n";
+        cout << "| 3. Salir                   |\n";
+        cout << "|----------------------------|\n";
+        cout << "\n";
+
+        setColor(14);
+
+        escribirLento("Ingrese una opcion: ");
+        cin>>opc;
+
+        switch(opc) {
+            case 1:
+                setColor(11);
+                system("cls");
+                estuController.buscarPorNombre();
+                system("pause");
+                system("cls");
+                break;
+            case 2:
+                setColor(11);
+                system("cls");
+                estuController.listaEstudiantesOrdenados();
+                system("pause");
+                system("cls");
+                break;
+            case 3:
+                cout<<"gracias por utilizar el programa"<<endl;
+                setColor(11);
+                reporteGeneral();
+                system("cls");
+                break;
+            default:
+                cout<<"Opcion incorrecta..."<<endl;
+                system("cls");
+                setColor(11);
+
+        }
+    }while(opc !=3);
 
 }
 
 void UI::reporteProfesores() {
+    int opc;
+    system("cls");
+    setColor(11);
+    do {
+        cout << "|----------------------------|\n";
+        cout << "|     REPORTE PROFESORES     |\n";
+        cout << "|----------------------------|\n";
+        cout << "| 1. Buscar Profesor         |\n";
+        cout << "| 2. Todos los Profesores    |\n";
+        cout << "| 3. Salir                   |\n";
+        cout << "|----------------------------|\n";
+        cout << "\n";
 
+        setColor(14);
+        escribirLento("Ingrese una opcion: ");
+
+        cin>>opc;
+
+        switch(opc) {
+            case 1:
+                setColor(11);
+                system("cls");
+                profesorController.buscarProfesor();
+                system("pause");
+                system("cls");
+                break;
+            case 2:
+                setColor(11);
+                system("cls");
+                profesorController.listaProfesores();
+                system("pause");
+                system("cls");
+                break;
+            case 3:
+                cout<<"gracias por utilizar el programa"<<endl;
+                setColor(11);
+                reporteGeneral();
+                system("cls");
+                break;
+            default:
+                cout<<"Opcion incorrecta..."<<endl;
+                system("cls");
+                setColor(11);
+                break;
+        }
+    }while(opc !=4);
 }
+
