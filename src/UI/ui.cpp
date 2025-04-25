@@ -57,7 +57,7 @@ void pantallaCarga(){
        "UI/UX: Andre Salvador\n"
        "Software Engineer: Daniel Vasquez\n"
        "Software Architect: Edwin Baquiax\n"
-       "V.1.0 demo\n"
+       "V.1.1\n"
    );
 
 }
