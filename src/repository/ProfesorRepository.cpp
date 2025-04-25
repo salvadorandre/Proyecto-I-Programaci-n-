@@ -19,6 +19,7 @@ ProfesorRepository::ProfesorRepository(FILE *file,string fileName) {
    file = fopen(this->fileName.c_str(), "a");
   if (file == nullptr) {
     cout<<"Error en la creacion del archivo"<<endl;
+    return;
   }
   long isNew = ftell(file);
   if(isNew == 0) {
@@ -61,7 +62,7 @@ Profesor ProfesorRepository::getProfesorById(int idProfesor) {
 
 }
   //metodos solo para manipular archivos
-bool ProfesorRepository::putProfesor(Profesor profesor) {
+bool ProfesorRepository::postProfesor(Profesor profesor) {
   int foundProfesor = getProfesorById(profesor.idProfesor).idProfesor;
   if (foundProfesor != -1)return false;
 
