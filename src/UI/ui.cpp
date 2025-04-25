@@ -274,12 +274,17 @@ void UI::reporteGeneral() {
                 reporteProfesores();
                 break;
             case 3:
+                system("cls");
+                setColor(11);
                 asigController.listarAsignaciones();
                 system("pause");
                 system("cls");
                 break;
             case 4:
+                system("cls");
                 curso= cursos.getCursos();
+                setColor(11);
+
                 asigController.listarAsignaciones(curso);
                 system("pause");
                 system("cls");
