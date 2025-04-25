@@ -96,7 +96,7 @@ EstudianteController::EstudianteController(EstudianteService estudianteService):
                     cout << "Grado no valido" << endl;
                     break;
             }
-        }while (grado >= 0 || grado >=6);
+        }while (grado < 1 || grado > 5);
 
         estudiante.active = true;
         cout << "Creando estudiante..." << endl;
